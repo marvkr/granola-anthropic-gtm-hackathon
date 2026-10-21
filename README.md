@@ -51,20 +51,15 @@ Open `http://localhost:5173/s/anthropic-v1`. Press `F` to present.
 
 ## Deck updater script
 
-Takes investor meeting notes from Granola, the current deck (slides and speaker
-notes) and a style guide, and asks Claude to write the next version of the deck
-for the follow-up meeting.
-
-- `deck/deck.md`: the current deck (Markdown, slides split by `---`, speaker notes in `<!-- -->`)
-- `context/style-guide.md`: how the deck should look and sound
-- `meetings/`: Granola meeting notes
-- `update_deck.py`: writes `deck/versions/deck-vN.md` plus a changelog, and prints the changelog
+`update_deck.py` runs the same loop without Claude Code, using an Anthropic API key. It sends the latest deck version, a call transcript, `context/style-guide.md`, and the `revise-deck-from-call` and `slide-authoring` skills to Claude. It then writes the feedback report, runs `npm run deck:next`, and applies Claude's edits to the new version.
 
 ```bash
 pip3 install -r requirements.txt
 cp .env.example .env   # paste the API key into .env; it's gitignored, never commit it
-python3 update_deck.py --meeting meetings/sample-investor-meeting.md
+python3 update_deck.py --meeting meetings/2026-10-20-anthropic-v1-vc-call.md
 ```
+
+`meetings/2026-10-20-anthropic-v1-vc-call.md` is a sample VC call in which the V1 deck is presented. Its people and firm are made up.
 
 ## Layout
 
@@ -75,4 +70,4 @@ python3 update_deck.py --meeting meetings/sample-investor-meeting.md
 | `feedback/` | One report per call: each question, its slide and the fix |
 | `.mcp.json` | The Granola MCP server |
 | `versions/`, `scripts/deck-version.mjs` | The version registry and the script that creates, tags and checks versions |
-| `deck/`, `context/`, `meetings/`, `update_deck.py` | The Markdown deck and the Python script that updates it from meeting notes |
+| `meetings/`, `context/`, `update_deck.py` | Sample call transcripts, the style guide, and the API-key script that runs the loop |

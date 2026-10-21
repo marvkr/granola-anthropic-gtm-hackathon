@@ -9,6 +9,17 @@
       "basedOn": null,
       "meeting": null,
       "report": null
+    },
+    {
+      "version": 2,
+      "folder": "slides/anthropic-v2",
+      "createdAt": "2026-10-21T02:31:47.364Z",
+      "basedOn": 1,
+      "meeting": {
+        "title": "Anthropic V1 deck review with Harbor Peak Capital",
+        "date": "2026-10-20"
+      },
+      "report": "feedback/2026-10-20-anthropic-v1-deck-review-with-harbor-peak-capital.md"
     }
   ]
 }

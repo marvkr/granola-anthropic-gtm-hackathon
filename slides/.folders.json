@@ -10,6 +10,7 @@
     }
   ],
   "assignments": {
-    "anthropic-v1": "f-007f9cae"
+    "anthropic-v1": "f-007f9cae",
+    "anthropic-v2": "f-007f9cae"
   }
 }
