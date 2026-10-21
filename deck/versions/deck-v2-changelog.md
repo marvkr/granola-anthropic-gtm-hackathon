@@ -1,0 +1,31 @@
+- **Frontmatter:** Bumped version from v1 to v2.
+- **Product demo (slide 6 → 3):** Moved to slide 3, per Priya's request #5 ("I'd move it to the front"). Added a GIF placeholder so partners can see the product on Monday without a live demo. Kept the "under 60 seconds" claim because it resonated.
+- **New slide 4, Weekly active seats by cohort:** Answers request #3 and the retention concern ("weekly actives, not logos"). It sits right after the demo because Priya kept coming back to retention.
+- **Traction (slide 7 → 5):** Kept the Acme quote, which resonated. Added a pipeline placeholder to address "demand isn't just a few design partners." Notes mention Daniel's reference calls and the Acme intro. Note: the meeting notes say quotes were on "slide 6," but in v1 the only quote was on slide 7 (Traction). I treated it as this one.
+- **Problem (slide 2):** Bolded only one number, per the style guide. Notes now say to keep this under 30 seconds, since Priya said "I get the problem."
+- **Market size (slide 4 → 7):** Replaced the top-down $40B figure with a bottom-up table (target companies × reps per company × price). This answers request #1 and Daniel's ask.
+- **Competition (slide 5 → 8):** Replaced the generic table with concrete product differences against Gong and Salesforce Einstein, led by Sam's sentence. This answers request #2 and Priya's "put that sentence on a slide." The meeting notes call v1's slide a 2×2, but it was actually a checkmark table. I rebuilt it either way, because it didn't answer the question. Competitor cells are left unverified on purpose. Priya noted that Salesforce already has built-in AI follow-ups, so v1's ❌ marks were not safe to repeat.
+- **New slide 9, A company, not a feature:** Answers Priya's "why is this a company and not a feature Gong ships next quarter?" It also addresses Northbeam's 2024 "feature not product" loss head on, from the founder's notes.
+- **Business model → Pricing (slide 10):** Standardized on $49 per seat per month and removed the conflicting usage-based line. Added an example contract. This answers request #4 and the pricing concern. **Founder must confirm** that per-seat pricing is the position before sending.
+- **New slide 12, Use of funds:** Breaks down the $3M with 18-month milestones, per request #6.
+- **New appendix slide, SOC 2:** Daniel asked about SOC 2, from the founder's notes.
+- **Unchanged:** Title, Why now, Team, The ask. Founder-market fit resonated, and the other slides weren't discussed.
+
+**Data needed**
+- [TODO: 15-second GIF of the demo, exported from /assets/demo.mp4]
+- [TODO: chart of weekly active seats by monthly cohort, weeks 1–16] (Sam is pulling this from the product DB)
+- [TODO: % of 140 live seats active last week]
+- [TODO: % of first-cohort seats active in latest week]
+- [TODO: qualified pipeline beyond design partners, companies and seats] (Daniel is diligencing this)
+- [TODO: number of companies in our ICP, plus ICP definition]
+- [TODO: average sales reps per target company]
+- [TODO: bottom-up TAM = companies × reps × $588]
+- [TODO: verify] Gong and Salesforce Einstein capability for each row of the competition table
+- [TODO: follow-ups sent and deals tracked to date]
+- [TODO: % of drafts sent without edits]
+- [TODO: recorders and CRMs supported today]
+- [TODO: billing terms, annual or monthly]
+- [TODO: example contract: customer (named with permission), seats, term, annual value]
+- [TODO: use-of-funds amounts and 18-month milestones for each area]
+- [TODO: confirm $1M ARR lands within 18 months]
+- [TODO: SOC 2 status and target date]
