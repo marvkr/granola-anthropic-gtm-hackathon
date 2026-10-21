@@ -11,7 +11,8 @@ Read the `slide-authoring` skill before you edit any page. It owns the 1920 × 1
 
 ## 1. Get the call
 
-- Use the Granola MCP server from `.mcp.json`. Check the tool list first. Third-party listings name these tools: `list_meetings`, `get_meetings`, `query_granola_meetings` and `get_meeting_transcript`.
+- If the user passes a transcript file, such as `transcripts/<date>-<slug>.md`, read that file and skip the Granola steps below. A file whose front matter says `source: granola-simulated` is a simulated call: say so in the report and in `--meeting`.
+- Otherwise use the Granola MCP server from `.mcp.json`. Check the tool list first. Third-party listings name these tools: `list_meetings`, `get_meetings`, `query_granola_meetings` and `get_meeting_transcript`.
 - Take the meeting the user names. If the user names none, take the most recent meeting.
 - Get the full transcript with speaker labels. If the transcript is not available, use the meeting notes. Say that in the report, because notes lose most of the questions.
 
