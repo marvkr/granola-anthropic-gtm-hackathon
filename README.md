@@ -45,6 +45,27 @@ Open `http://localhost:5173/s/anthropic-v1`. Press `F` to present.
 
 `.mcp.json` registers Granola's hosted MCP server at `https://mcp.granola.ai/mcp`. Claude Code asks you to sign in to Granola the first time it uses the server.
 
+## Run the loop automatically
+
+Granola sends a `note.generated` webhook when it finishes the notes for a call. `scripts/granola.mjs` receives it and saves the transcript to `transcripts/` with listeners anonymized. With `--revise`, it also runs `update_deck.py` on it, one call at a time. Webhooks and API keys need a Granola Business or Enterprise plan.
+
+1. In the Granola desktop app, create an API key under Settings → Connectors → API keys. Put it in `.env` as `GRANOLA_API_KEY`, next to `ANTHROPIC_API_KEY`.
+2. Start the receiver and expose it over HTTPS, for example with ngrok:
+
+   ```bash
+   node scripts/granola.mjs serve --revise   # listens on :8787
+   ngrok http 8787
+   ```
+
+3. In Granola, open Settings → Connectors → Webhooks, add the ngrok URL, and subscribe to `note.generated` and `note.access_granted`. Put the `whsec_...` signing secret in `.env` as `GRANOLA_WEBHOOK_SECRET`. Granola shows it only once.
+
+To pull one call by hand, run `node scripts/granola.mjs note <note_id>`. `transcripts/fixtures/` holds a simulated call on V3 in the Granola API's note format, so the conversion runs without a Granola account:
+
+```bash
+node scripts/granola.mjs note --file transcripts/fixtures/simulated-customer-call-v3.json --simulated \
+  --out transcripts/2026-10-20-simulated-customer-call-v3.md
+```
+
 ## The demo deck
 
 `slides/anthropic-v1` is a demo deck about Anthropic. Every figure comes from a public source, and the speaker notes name each source. It is not an Anthropic document.
@@ -69,5 +90,6 @@ python3 update_deck.py --meeting meetings/2026-10-20-anthropic-v1-vc-call.md
 | `.claude/skills/revise-deck-from-call/` | The skill that turns a call into the next version |
 | `feedback/` | One report per call: each question, its slide and the fix |
 | `.mcp.json` | The Granola MCP server |
+| `scripts/granola.mjs` | Fetches a Granola note into `transcripts/`, and the webhook receiver that runs the loop |
 | `versions/`, `scripts/deck-version.mjs` | The version registry and the script that creates, tags and checks versions |
 | `meetings/`, `context/`, `update_deck.py` | Sample call transcripts, the style guide, and the API-key script that runs the loop |

@@ -1,0 +1,372 @@
+{
+  "id": "not_SIMULATEDanthropicV3",
+  "title": "Simulated customer call: Anthropic V3 deck",
+  "owner": {
+    "name": "Presenter",
+    "email": "presenter@example.com"
+  },
+  "created_at": "2026-10-20T19:00:00Z",
+  "summary": "SIMULATED CALL. Nobody held this meeting. The presenter pitched the Anthropic V3 demo deck to the platform and security leads of a fictional company choosing a model vendor for internal agents. The trust framing, the product surfaces, the growth headline and the closing install command landed. The listeners did not follow the three ways to buy: they read them as alternatives, asked whether they would pay twice with seats plus Bedrock, and what counting toward an AWS commitment means. They asked for data use and retention, which no slide covers, and said the raise slide speaks to investors, not to buyers asking about capacity and rate limits. Next steps: data use docs and a pricing example with seats plus Bedrock; pilot call next week.",
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Thanks for the time. I'll take you through Anthropic in eleven slides, then we can talk about a pilot. It's a demo deck, every number is from a public source.",
+      "start_time": "2026-10-20T19:00:00Z",
+      "end_time": "2026-10-20T19:00:12Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Great. We're a platform team choosing a model vendor for internal agents, so that's the lens.",
+      "start_time": "2026-10-20T19:00:15Z",
+      "end_time": "2026-10-20T19:00:21Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide two. AI can do the work. Enterprises still have to trust it. Admins control access and data, get audit logs, and the model behaves predictably in production.",
+      "start_time": "2026-10-20T19:00:24Z",
+      "end_time": "2026-10-20T19:00:35Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "That's the right framing for us. Security is my job, so governance is what I care about.",
+      "start_time": "2026-10-20T19:00:38Z",
+      "end_time": "2026-10-20T19:00:44Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide three. Enterprise AI spend tripled in a year, 11.5 to 37 billion, whole market figures from Menlo Ventures.",
+      "start_time": "2026-10-20T19:00:47Z",
+      "end_time": "2026-10-20T19:00:54Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Okay, clear.",
+      "start_time": "2026-10-20T19:00:57Z",
+      "end_time": "2026-10-20T19:01:01Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide four. One model family behind every surface: Claude apps, Claude Code, the API, AWS and Google Cloud.",
+      "start_time": "2026-10-20T19:01:04Z",
+      "end_time": "2026-10-20T19:01:11Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "We're on AWS, so that's Bedrock for us. Good.",
+      "start_time": "2026-10-20T19:01:14Z",
+      "end_time": "2026-10-20T19:01:18Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide five. Run-rate revenue went from 47 to 65 billion plus in about two months.",
+      "start_time": "2026-10-20T19:01:21Z",
+      "end_time": "2026-10-20T19:01:27Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "That's a striking number. The headline makes it easy to remember.",
+      "start_time": "2026-10-20T19:01:30Z",
+      "end_time": "2026-10-20T19:01:34Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide six. A developer wedge opens the 37 billion enterprise market. Developer, then team, then an enterprise deployment with SSO, SCIM, audit logs and admin controls.",
+      "start_time": "2026-10-20T19:01:37Z",
+      "end_time": "2026-10-20T19:01:47Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "Good, that's concrete now.",
+      "start_time": "2026-10-20T19:01:50Z",
+      "end_time": "2026-10-20T19:01:54Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide seven. Usage starts with developers. Contracts expand the account. Three ways to buy: usage-based API, seat subscriptions, and annual enterprise contracts, including through cloud marketplaces.",
+      "start_time": "2026-10-20T19:01:57Z",
+      "end_time": "2026-10-20T19:02:07Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Sorry, I don't follow. Are those three options and we pick one, or do they stack?",
+      "start_time": "2026-10-20T19:02:10Z",
+      "end_time": "2026-10-20T19:02:16Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "They stack. Seats are for people using the Claude apps and Claude Code. The API is metered for what you build into your own systems. An enterprise contract can bundle both with committed spend.",
+      "start_time": "2026-10-20T19:02:19Z",
+      "end_time": "2026-10-20T19:02:32Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "So if we have seats and we also build agents on Bedrock, do we pay Anthropic twice?",
+      "start_time": "2026-10-20T19:02:35Z",
+      "end_time": "2026-10-20T19:02:41Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "You pay for both, but on Bedrock the API usage is billed through AWS and can count toward your AWS commitment. The seats are separate.",
+      "start_time": "2026-10-20T19:02:44Z",
+      "end_time": "2026-10-20T19:02:54Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "What do you mean, count toward the commitment? Our finance team will ask exactly that.",
+      "start_time": "2026-10-20T19:02:57Z",
+      "end_time": "2026-10-20T19:03:03Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "If you have a committed spend agreement with AWS, marketplace purchases can draw it down. I'd check the exact terms with your AWS rep.",
+      "start_time": "2026-10-20T19:03:06Z",
+      "end_time": "2026-10-20T19:03:15Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Okay. That really needs to be on the slide. Right now it reads like three alternatives.",
+      "start_time": "2026-10-20T19:03:18Z",
+      "end_time": "2026-10-20T19:03:24Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Fair. Slide eight. Our edge is safety research that ships as product. Enterprises buy the behaviour, not the policy. 8 of the Fortune 10 run Claude.",
+      "start_time": "2026-10-20T19:03:27Z",
+      "end_time": "2026-10-20T19:03:37Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "How does that show up for an agent that touches our production systems?",
+      "start_time": "2026-10-20T19:03:40Z",
+      "end_time": "2026-10-20T19:03:45Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "It shows up as an agent that follows your system prompt and tool permissions more reliably, and that asks before an ambiguous action instead of guessing.",
+      "start_time": "2026-10-20T19:03:48Z",
+      "end_time": "2026-10-20T19:03:58Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "That's useful. And do you train on our data? Where does it live? Legal will block us on that before anything else.",
+      "start_time": "2026-10-20T19:04:01Z",
+      "end_time": "2026-10-20T19:04:09Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Commercial and API data isn't used for training by default, and on Bedrock the data stays in your AWS account and region. I don't have a slide on that.",
+      "start_time": "2026-10-20T19:04:12Z",
+      "end_time": "2026-10-20T19:04:23Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "Wait, there's no slide on data use at all? For a security buyer that's the first question. I'd add one.",
+      "start_time": "2026-10-20T19:04:26Z",
+      "end_time": "2026-10-20T19:04:34Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Understood. Slide nine, the team. Dario Amodei, CEO, and Daniela Amodei, President, founded in 2021.",
+      "start_time": "2026-10-20T19:04:37Z",
+      "end_time": "2026-10-20T19:04:43Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Fine.",
+      "start_time": "2026-10-20T19:04:46Z",
+      "end_time": "2026-10-20T19:04:50Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Slide ten. The 65 billion Series H funds the compute that keeps revenue compounding. 5 gigawatts of TPU with Google and Broadcom, up to 5 with Amazon.",
+      "start_time": "2026-10-20T19:04:53Z",
+      "end_time": "2026-10-20T19:05:03Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "For us the question is simpler. Will we hit rate limits when we scale our agents? What does the compute mean for capacity we can actually get?",
+      "start_time": "2026-10-20T19:05:06Z",
+      "end_time": "2026-10-20T19:05:16Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "The commitments are there so capacity grows with demand. For your account, enterprise contracts come with higher rate limits, and on Bedrock you can buy provisioned throughput.",
+      "start_time": "2026-10-20T19:05:19Z",
+      "end_time": "2026-10-20T19:05:29Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "That answer is better than the slide. The slide talks to investors, not to a buyer.",
+      "start_time": "2026-10-20T19:05:32Z",
+      "end_time": "2026-10-20T19:05:38Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "Last slide. AI research and products that put safety at the frontier, and the one command to install Claude Code.",
+      "start_time": "2026-10-20T19:05:41Z",
+      "end_time": "2026-10-20T19:05:49Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker A"
+      },
+      "text": "Ending on the install command is nice. Our developers will just try it.",
+      "start_time": "2026-10-20T19:05:52Z",
+      "end_time": "2026-10-20T19:05:57Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "diarization_label": "Speaker B"
+      },
+      "text": "Next step for us: the data use and retention docs, and a pricing example with seats plus Bedrock.",
+      "start_time": "2026-10-20T19:06:00Z",
+      "end_time": "2026-10-20T19:06:07Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me",
+        "name": "Presenter"
+      },
+      "text": "I'll send both today and set up a pilot call with your platform team next week.",
+      "start_time": "2026-10-20T19:06:10Z",
+      "end_time": "2026-10-20T19:06:16Z"
+    }
+  ]
+}
