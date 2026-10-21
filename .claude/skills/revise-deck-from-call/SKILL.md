@@ -17,7 +17,7 @@ Read the `slide-authoring` skill before you edit any page. It owns the 1920 × 1
 
 ## 2. Load the current deck
 
-- The deck is the folder `slides/<deck>-v<N>/` with the highest `N`. Each version is one `index.tsx`.
+- The deck is the latest version listed by `npm run deck:list -- <deck>`: the folder `slides/<deck>-v<N>/` with the highest `N`. Each version is one `index.tsx`.
 - For each page, record the slide number, the headline, the words on the page and its entry in the `notes` export.
 
 ## 3. Find the listener's questions
@@ -49,8 +49,9 @@ Write `feedback/<YYYY-MM-DD>-<meeting-slug>.md` with one table: slide, questions
 
 ## 7. Write the next version
 
-- Copy `slides/<deck>-v<N>/` to `slides/<deck>-v<N+1>/`.
-- Set `meta.title` to the new version and set `meta.createdAt` from `node -e "console.log(new Date().toISOString())"`.
+- Start from an up-to-date `main` on a new branch named `deck/<deck>-v<N+1>`.
+- Run `npm run deck:next -- <deck> --meeting "<meeting title>" --meeting-date <YYYY-MM-DD> --report feedback/<report>.md`. The script copies the latest version to `slides/<deck>-v<N+1>/`, sets its title and date, records the meeting in `versions/<deck>.json`, and groups the version with the others on the Open Slide home page. Never copy the folder by hand.
+- Edit only the new folder. Every tagged version is frozen, and `npm run deck:check` fails if one changes.
 - Apply only the fixes from the report. Keep the page order and keep `notes` aligned with the pages.
 - Never invent a figure. A new number must come from the call, where the presenter said it, or from a cited public source. Otherwise put a `TODO:` line in the notes.
 - Every page must still fit 1920 × 1080.
@@ -59,3 +60,11 @@ Write `feedback/<YYYY-MM-DD>-<meeting-slug>.md` with one table: slide, questions
 
 - Run `git diff --no-index slides/<deck>-v<N> slides/<deck>-v<N+1>`.
 - Reply with one table: slide, what changed, and the question that caused the change.
+
+## 9. Release the version
+
+- Run `npx tsc --noEmit` and `npm run deck:check`. Both must pass.
+- Commit the new folder, `versions/<deck>.json`, `slides/.folders.json` and the report. Open a pull request and merge it.
+- On `main`, after the merge, run `npm run deck:tag -- <deck>`. It tags the version `<deck>-v<N+1>` and pushes the tag, which freezes it.
+
+The repository is public. In the report, call each listener "Listener 1", "Listener 2" and so on, and quote only what they said about the deck.

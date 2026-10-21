@@ -1,0 +1,14 @@
+{
+  "deck": "anthropic",
+  "name": "Anthropic",
+  "versions": [
+    {
+      "version": 1,
+      "folder": "slides/anthropic-v1",
+      "createdAt": "2026-10-21T02:05:20.572Z",
+      "basedOn": null,
+      "meeting": null,
+      "report": null
+    }
+  ]
+}

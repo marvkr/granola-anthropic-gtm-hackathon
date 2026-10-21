@@ -1,4 +1,15 @@
 {
-  "folders": [],
-  "assignments": {}
+  "folders": [
+    {
+      "id": "f-007f9cae",
+      "name": "Anthropic",
+      "icon": {
+        "type": "color",
+        "value": "#c4643f"
+      }
+    }
+  ],
+  "assignments": {
+    "anthropic-v1": "f-007f9cae"
+  }
 }
