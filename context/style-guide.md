@@ -1,25 +1,23 @@
 # Deck style guide
 
-Placeholder: replace with your own style. The deck updater sends this file to
-Claude on every run, so anything written here shapes the new version.
+update_deck.py sends this file to Claude on every run, so anything written here
+shapes the next version. Layout, type and colour rules live in the
+`slide-authoring` skill and the deck's own design system; this file is about
+the words.
 
 ## Voice
 - Confident, plain English. No buzzwords ("revolutionary", "synergy", "AI-powered platform").
-- Short headlines: 6 words or fewer.
-- Lead with numbers. Every claim should have a number or a named customer behind it.
+- Headlines are one short sentence that states the point of the slide.
+- Lead with numbers. Every claim has a number, a named source or a named customer behind it.
+- Put the date next to every figure, and name the source on the slide when an investor might question it.
 
-## Slide structure
+## Slide copy
 - One idea per slide.
-- At most 3–4 bullets per slide, each under 12 words.
-- Bold the single most important number on each slide.
-- Use tables for comparisons, never 2×2 quadrant charts.
+- If a listener asked what a word or figure means, the slide should answer it without the presenter.
+- Disclose conflicts on the slide itself, not only in the notes (for example, a source that is also an investor).
 
 ## Speaker notes
-- Every slide has speaker notes in a `<!-- Speaker notes: ... -->` comment.
 - Notes say what to *say*, not what's on the slide.
-- When a slide changes because of investor feedback, the notes say which feedback it answers.
-
-## Format rules
-- Slides are separated by a line with `---`.
-- Keep the frontmatter at the top and bump `version` on each update.
-- Don't invent data. If a slide needs a number we don't have, use a placeholder like `[TODO: weekly active seats by cohort]`.
+- When a slide or its notes change because of a call, the notes say which question they answer.
+- Start the line the presenter must not forget with `Emphasize:`.
+- Don't invent data. If a slide needs a number we don't have, write a `TODO:` line in the notes.
