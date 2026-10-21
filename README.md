@@ -47,7 +47,7 @@ Open `http://localhost:5173/s/anthropic-v1`. Press `F` to present.
 
 ## Run the loop automatically
 
-Granola sends a `note.generated` webhook when it finishes the notes for a call. `scripts/granola.mjs` receives it, saves the transcript to `transcripts/` with listeners anonymized, and runs `update_deck.py` on it. Webhooks and API keys need a Granola Business or Enterprise plan.
+Granola sends a `note.generated` webhook when it finishes the notes for a call. `scripts/granola.mjs` receives it and saves the transcript to `transcripts/` with listeners anonymized. With `--revise`, it also runs `update_deck.py` on it, one call at a time. Webhooks and API keys need a Granola Business or Enterprise plan.
 
 1. In the Granola desktop app, create an API key under Settings → Connectors → API keys. Put it in `.env` as `GRANOLA_API_KEY`, next to `ANTHROPIC_API_KEY`.
 2. Start the receiver and expose it over HTTPS, for example with ngrok:
@@ -57,7 +57,7 @@ Granola sends a `note.generated` webhook when it finishes the notes for a call. 
    ngrok http 8787
    ```
 
-3. In Granola, open Settings → Connectors → Webhooks, add the ngrok URL, and subscribe to `note.generated`. Put the `whsec_...` signing secret in `.env` as `GRANOLA_WEBHOOK_SECRET`. Granola shows it only once.
+3. In Granola, open Settings → Connectors → Webhooks, add the ngrok URL, and subscribe to `note.generated` and `note.access_granted`. Put the `whsec_...` signing secret in `.env` as `GRANOLA_WEBHOOK_SECRET`. Granola shows it only once.
 
 To pull one call by hand, run `node scripts/granola.mjs note <note_id>`. `transcripts/fixtures/` holds a simulated call on V3 in the Granola API's note format, so the conversion runs without a Granola account:
 

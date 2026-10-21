@@ -43,7 +43,13 @@ function loadDotenv(path = ".env") {
 async function api(path) {
   const key = process.env.GRANOLA_API_KEY;
   if (!key) throw new Error("set GRANOLA_API_KEY in .env");
-  return fetch(`${API}${path}`, { headers: { Authorization: `Bearer ${key}` } });
+  return fetch(`${API}${path}`, { headers: { Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(10_000) });
+}
+
+async function apiJson(path) {
+  const response = await api(path);
+  if (!response.ok) throw new Error(`GET ${path} returned ${response.status}: ${await response.text()}`);
+  return response.json();
 }
 
 // Get Note with the transcript inlined, or fetched page by page when it is too large.
@@ -52,11 +58,11 @@ async function fetchNote(id) {
   if (response.ok) return response.json();
   if (response.status !== 413) throw new Error(`GET /notes/${id} returned ${response.status}: ${await response.text()}`);
 
-  const note = await (await api(`/notes/${id}`)).json();
+  const note = await apiJson(`/notes/${id}`);
   note.transcript = [];
   let cursor = null;
   do {
-    const page = await (await api(`/notes/${id}/transcript${cursor ? `?cursor=${cursor}` : ""}`)).json();
+    const page = await apiJson(`/notes/${id}/transcript${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`);
     note.transcript.push(...page.transcript);
     cursor = page.hasMore ? page.cursor : null;
   } while (cursor);
@@ -102,7 +108,7 @@ function toMarkdown(note, simulated) {
     "",
     "## Summary",
     "",
-    note.summary ?? "_No summary._",
+    note.summary ?? note.summary_text ?? "_No summary._",
     "",
     "## Transcript",
     "",
@@ -113,7 +119,7 @@ function toMarkdown(note, simulated) {
 
 async function saveNote(note, out, simulated = false) {
   const date = (note.created_at ?? new Date().toISOString()).slice(0, 10);
-  const path = out ?? `transcripts/${date}-${slug(note.title)}.md`;
+  const path = out ?? `transcripts/${date}-${slug(note.title)}-${slug(note.id)}.md`;
   await mkdir("transcripts", { recursive: true });
   await writeFile(path, toMarkdown(note, simulated));
   return path;
@@ -143,10 +149,27 @@ function verify(headers, body, secret) {
   });
 }
 
+// One revision at a time: each one runs deck:next and builds on the latest version.
+let revisions = Promise.resolve();
+
 function revise(meetingPath) {
-  const child = spawn("python3", ["update_deck.py", "--meeting", meetingPath], { stdio: "inherit" });
-  child.on("exit", (code) => console.log(`update_deck.py finished for ${meetingPath} (exit ${code})`));
+  revisions = revisions.then(
+    () =>
+      new Promise((resolve) => {
+        const child = spawn("python3", ["update_deck.py", "--meeting", meetingPath], { stdio: "inherit" });
+        child.on("error", (error) => {
+          console.error(`granola: could not run update_deck.py: ${error.message}`);
+          resolve();
+        });
+        child.on("exit", (code) => {
+          console.log(`update_deck.py finished for ${meetingPath} (exit ${code})`);
+          resolve();
+        });
+      }),
+  );
 }
+
+const MAX_BODY = 64 * 1024;
 
 function serve() {
   const secret = process.env.GRANOLA_WEBHOOK_SECRET;
@@ -157,20 +180,32 @@ function serve() {
 
   createServer((req, res) => {
     if (req.method !== "POST") return res.writeHead(405).end();
-    let body = "";
-    req.on("data", (chunk) => (body += chunk));
+    const chunks = [];
+    let size = 0;
+    req.on("data", (chunk) => {
+      size += chunk.length;
+      if (size > MAX_BODY) {
+        res.writeHead(413).end();
+        req.destroy();
+      } else chunks.push(chunk);
+    });
     req.on("end", async () => {
+      const body = Buffer.concat(chunks).toString("utf8");
       if (!verify(req.headers, body, secret)) return res.writeHead(401).end();
-      // Answer first: Granola retries anything slower than 15 seconds.
-      res.writeHead(200).end();
       const event = JSON.parse(body);
-      if (seen.has(event.event_id) || !["note.generated", "note.access_granted"].includes(event.event_type)) return;
-      seen.add(event.event_id);
+      if (seen.has(event.event_id) || !["note.generated", "note.access_granted"].includes(event.event_type)) {
+        return res.writeHead(200).end();
+      }
+      // Save the transcript before answering, so a failure gets a 500 and Granola retries.
+      // The slow part, the deck revision, runs after the answer: Granola waits 15 seconds at most.
       try {
         const path = await saveNote(await fetchNote(event.note_id));
+        seen.add(event.event_id);
+        res.writeHead(200).end();
         console.log(`${event.event_type} ${event.note_id} → ${path}`);
         if (rest.includes("--revise")) revise(path);
       } catch (error) {
+        res.writeHead(500).end();
         console.error(`granola: could not handle ${event.note_id}: ${error.message}`);
       }
     });
