@@ -13,7 +13,24 @@ Every call makes the next deck better. Record a pitch or sales call in Granola. 
 4. Claude matches each question to the slide on screen at that moment. Many questions on one slide, a follow-up question, or "what do you mean" marks that slide as unclear.
 5. Claude writes `slides/<deck>-v<N+1>/` and a report in `feedback/`. An unclear slide gets new copy. A clear slide that still drew "why" or "how" questions gets new speaker notes.
 
-Each version is its own folder, so `git diff --no-index slides/anthropic-v1 slides/anthropic-v2` shows exactly what the call changed.
+## Deck versions
+
+Every call adds one version: V1, V2, V3 and so on. Nothing overwrites an older version.
+
+| Piece | Where |
+| --- | --- |
+| The slides of version N | `slides/<deck>-vN/index.tsx` |
+| Which call produced each version | `versions/<deck>.json` |
+| The frozen release of version N | git tag `<deck>-vN` |
+
+| Command | What it does |
+| --- | --- |
+| `npm run deck:next -- anthropic --meeting "<title>" --meeting-date <date>` | Copies the latest version to the next number and records the call |
+| `npm run deck:list -- anthropic` | Lists every version, its call, and whether it is tagged |
+| `npm run deck:tag -- anthropic` | Tags and pushes each untagged version; run it on `main` after the merge |
+| `npm run deck:check` | Fails if a tagged version changed. CI runs it on every pull request. |
+
+To see what one call changed, run `git diff --no-index slides/anthropic-v1 slides/anthropic-v2`.
 
 ## Run the deck
 
@@ -57,4 +74,5 @@ python3 update_deck.py --meeting meetings/sample-investor-meeting.md
 | `.claude/skills/revise-deck-from-call/` | The skill that turns a call into the next version |
 | `feedback/` | One report per call: each question, its slide and the fix |
 | `.mcp.json` | The Granola MCP server |
+| `versions/`, `scripts/deck-version.mjs` | The version registry and the script that creates, tags and checks versions |
 | `deck/`, `context/`, `meetings/`, `update_deck.py` | The Markdown deck and the Python script that updates it from meeting notes |

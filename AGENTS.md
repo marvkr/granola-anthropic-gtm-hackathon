@@ -9,7 +9,7 @@ You are authoring **slides** in this repo. Every slide is arbitrary React code t
 - Put slide-specific images/videos/fonts under `slides/<id>/assets/`. For assets reused across decks or themes (logos, avatars), use the global `assets/` folder and import via `@assets/...`.
 - Do **not** touch `package.json`, `open-slide.config.ts`, or other slides.
 - Do not add dependencies. Use only `react` and standard web APIs.
-- Each deck version is its own folder, `slides/<deck>-v<N>/`. Never edit an older version. To revise a deck after a call, use the `revise-deck-from-call` skill, which writes the next version.
+- Each deck version is its own folder, `slides/<deck>-v<N>/`, listed in `versions/<deck>.json`. Create a version only with `npm run deck:next`. A tagged version is frozen, and `npm run deck:check` fails if it changes. To revise a deck after a call, use the `revise-deck-from-call` skill.
 
 ## Which skill to use
 

@@ -7,7 +7,11 @@
     "dev": "open-slide dev",
     "build": "open-slide build",
     "preview": "open-slide preview",
-    "sync:skills": "open-slide sync:skills"
+    "sync:skills": "open-slide sync:skills",
+    "deck:next": "node scripts/deck-version.mjs next",
+    "deck:tag": "node scripts/deck-version.mjs tag",
+    "deck:check": "node scripts/deck-version.mjs check",
+    "deck:list": "node scripts/deck-version.mjs list"
   },
   "dependencies": {
     "@open-slide/core": "^2.0.0",
