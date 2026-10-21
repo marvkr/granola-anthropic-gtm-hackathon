@@ -20,6 +20,17 @@
         "date": "2026-10-20"
       },
       "report": "feedback/2026-10-20-anthropic-v1-deck-review-with-harbor-peak-capital.md"
+    },
+    {
+      "version": 3,
+      "folder": "slides/anthropic-v3",
+      "createdAt": "2026-10-21T02:37:46.682Z",
+      "basedOn": 2,
+      "meeting": {
+        "title": "Simulated investor call: Anthropic V2 deck",
+        "date": "2026-10-20"
+      },
+      "report": "feedback/2026-10-20-simulated-investor-call-v2.md"
     }
   ]
 }
