@@ -32,6 +32,23 @@ Open `http://localhost:5173/s/anthropic-v1`. Press `F` to present.
 
 `slides/anthropic-v1` is a demo deck about Anthropic. Every figure comes from a public source, and the speaker notes name each source. It is not an Anthropic document.
 
+## Deck updater script
+
+Takes investor meeting notes from Granola, the current deck (slides and speaker
+notes) and a style guide, and asks Claude to write the next version of the deck
+for the follow-up meeting.
+
+- `deck/deck.md`: the current deck (Markdown, slides split by `---`, speaker notes in `<!-- -->`)
+- `context/style-guide.md`: how the deck should look and sound
+- `meetings/`: Granola meeting notes
+- `update_deck.py`: writes `deck/versions/deck-vN.md` plus a changelog, and prints the changelog
+
+```bash
+pip3 install -r requirements.txt
+cp .env.example .env   # paste the API key into .env; it's gitignored, never commit it
+python3 update_deck.py --meeting meetings/sample-investor-meeting.md
+```
+
 ## Layout
 
 | Path | Contents |
@@ -40,3 +57,4 @@ Open `http://localhost:5173/s/anthropic-v1`. Press `F` to present.
 | `.claude/skills/revise-deck-from-call/` | The skill that turns a call into the next version |
 | `feedback/` | One report per call: each question, its slide and the fix |
 | `.mcp.json` | The Granola MCP server |
+| `deck/`, `context/`, `meetings/`, `update_deck.py` | The Markdown deck and the Python script that updates it from meeting notes |
