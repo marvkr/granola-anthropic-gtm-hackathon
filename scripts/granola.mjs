@@ -156,7 +156,11 @@ function revise(meetingPath) {
   revisions = revisions.then(
     () =>
       new Promise((resolve) => {
-        const child = spawn("python3", ["update_deck.py", "--meeting", meetingPath], { stdio: "inherit" });
+        // A hung revision is killed after 20 minutes so the next call is not blocked.
+        const child = spawn("python3", ["update_deck.py", "--meeting", meetingPath], {
+          stdio: "inherit",
+          timeout: 20 * 60_000,
+        });
         child.on("error", (error) => {
           console.error(`granola: could not run update_deck.py: ${error.message}`);
           resolve();
@@ -196,15 +200,17 @@ function serve() {
       if (seen.has(event.event_id) || !["note.generated", "note.access_granted"].includes(event.event_type)) {
         return res.writeHead(200).end();
       }
+      // Reserve the id while it is handled, so a duplicate delivery in the meantime is skipped.
+      seen.add(event.event_id);
       // Save the transcript before answering, so a failure gets a 500 and Granola retries.
       // The slow part, the deck revision, runs after the answer: Granola waits 15 seconds at most.
       try {
         const path = await saveNote(await fetchNote(event.note_id));
-        seen.add(event.event_id);
         res.writeHead(200).end();
         console.log(`${event.event_type} ${event.note_id} → ${path}`);
         if (rest.includes("--revise")) revise(path);
       } catch (error) {
+        seen.delete(event.event_id);
         res.writeHead(500).end();
         console.error(`granola: could not handle ${event.note_id}: ${error.message}`);
       }
